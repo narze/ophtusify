@@ -32,6 +32,13 @@
   }
 </script>
 
+<svelte:head>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Prompt&display=swap"
+    rel="stylesheet"
+  />
+</svelte:head>
+
 <main class="bg-gray-800 min-h-screen grid place-content-center gap-8">
   <h1 class="text-6xl text-white text-center uppercase mb-4">Ophtusify</h1>
 
