@@ -43,7 +43,7 @@
 </svelte:head>
 
 <Kofi name="narze" label="Support Me" />
-<Social {url} {title} />
+<Social {url} {title} {description} />
 
 <main class="bg-gray-800 min-h-screen grid place-content-center gap-8 py-12">
   <div class="flex flex-col">
