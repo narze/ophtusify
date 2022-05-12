@@ -40,7 +40,11 @@
 </svelte:head>
 
 <main class="bg-gray-800 min-h-screen grid place-content-center gap-8">
-  <h1 class="text-6xl text-white text-center uppercase mb-4">Ophtusify</h1>
+  <h1
+    class="text-6xl mb-4 font-bold text-transparent text-center uppercase bg-clip-text bg-gradient-to-br from-[#6215f1] to-[#1b3efa]"
+  >
+    Ophtusify
+  </h1>
 
   <div bind:this={node} class="bg relative h-[600px] w-[600px] overflow-hidden">
     <div class="relative m-[2.5%] h-[95%] w-[95%] overflow-hidden">
