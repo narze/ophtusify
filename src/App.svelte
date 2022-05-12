@@ -4,10 +4,13 @@
   import logo from "./assets/ophtus-logo.png"
   import placeholder from "./assets/9arm.jpg"
   import domtoimage from "dom-to-image"
+  import Kofi from "./lib/Kofi.svelte"
+  import Social from "./lib/Social.svelte"
 
   let title = "Ophtus Post Fan Remake!"
   let description =
     "ไม่ต้องรอแฟนเพจ ชาวเน็ตออกโรงเอง ฟอนต์ใหญ่ทะลุจอ ไม่ต้องจ้องให้เมื่อยตา!"
+  let url = "https://ophtusify.narze.live/"
 
   let avatar, fileinput, node
 
@@ -39,12 +42,19 @@
   />
 </svelte:head>
 
-<main class="bg-gray-800 min-h-screen grid place-content-center gap-8">
-  <h1
-    class="text-6xl mb-4 font-bold text-transparent text-center uppercase bg-clip-text bg-gradient-to-br from-[#6215f1] to-[#1b3efa]"
-  >
-    Ophtusify 🕶
-  </h1>
+<Kofi name="narze" label="Support Me" />
+<Social {url} {title} {description} />
+
+<main
+  class="p-12 min-h-screen grid place-content-center gap-4 scale-[0.6] sm:scale-75 md:scale-90 lg:scale-100"
+>
+  <div class="flex flex-col">
+    <h1
+      class="text-6xl mb-4 font-bold text-transparent text-center uppercase bg-clip-text bg-gradient-to-br from-[#6215f1] to-[#1b3efa]"
+    >
+      Ophtusify 🕶
+    </h1>
+  </div>
 
   <div bind:this={node} class="bg relative h-[600px] w-[600px] overflow-hidden">
     <div class="relative m-[2.5%] h-[95%] w-[95%] overflow-hidden">
@@ -86,27 +96,27 @@
   </div>
 
   <input
-    class="bg-gray-200 font-bold text-[#6215f1] text-xl appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-[#6215f1]"
+    class="bg-black font-bold text-[#6215f1] text-center text-xl appearance-none border-2 border-gray-700 rounded w-full py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-[#6215f1]"
     type="text"
     bind:value={title}
   />
 
   <textarea
     rows="2"
-    class="bg-gray-200 text-lg appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-[#6215f1]"
+    class="bg-black font-medium text-center text-lg appearance-none border-2 border-gray-700 rounded w-full py-2 px-4 text-white leading-tight focus:outline-none focus:bg-white focus:border-[#6215f1]"
     type="text"
     bind:value={description}
   />
 
-  <div class="flex gap-8">
-    <div
-      class="w-1/2 text-white text-center text-xl border rounded px-2 py-4"
+  <div class="flex flex-row gap-2">
+    <button
+      class="text-white text-center text-xl border-2 border-slate-400 rounded px-2 py-4 basis-full bg-gradient-to-r from-[#6215f1] to-[#1b3efa]"
       on:click={() => {
         fileinput.click()
       }}
     >
       เลือกภาพ
-    </div>
+    </button>
     <input
       style="display:none"
       type="file"
@@ -114,36 +124,38 @@
       on:change={(e) => onFileSelected(e)}
       bind:this={fileinput}
     />
-    <div
-      class="w-1/2 text-white text-center text-xl border rounded px-2 py-4"
+    <button
+      class="text-white text-center text-xl border-2 border-slate-400 rounded px-2 py-4 basis-full bg-gradient-to-r from-[#6215f1] to-[#1b3efa]"
       on:click={() => {
         copy()
       }}
     >
       ดาวน์โหลด
-    </div>
-  </div>
-
-  <!-- Bottom link -->
-  <div class="fixed inset-x-0 bottom-2 text-center">
-    <a
-      href="https://github.com/narze/ophtusify"
-      target="_blank"
-      class="text-white bg-[#6215f1] px-2 py-1 rounded-md mx-1">Github</a
-    >
-    <a
-      href="https://www.twitch.tv/videos/1481867740"
-      target="_blank"
-      class="text-white bg-[#6215f1] px-2 py-1 rounded-md mx-1"
-      >Live Code @ Twitch (Biblethump)</a
-    >
+    </button>
   </div>
 </main>
 
-<style>
+<!-- Bottom links -->
+<div class="fixed inset-x-0 bottom-16 sm:bottom-4 text-center">
+  <a
+    href="https://github.com/narze/ophtusify"
+    target="_blank"
+    class="text-white text-sm bg-gradient-to-r from-[#6215f1] to-[#1b3efa] px-2 py-1 rounded-md mx-1"
+    >Github</a
+  >
+  <a
+    href="https://www.twitch.tv/videos/1481867740"
+    target="_blank"
+    class="text-white text-sm bg-gradient-to-r from-[#6215f1] to-[#1b3efa] px-2 py-1 rounded-md mx-1"
+    >Live Code @ Twitch (Biblethump)</a
+  >
+</div>
+
+<style lang="postcss">
   :root {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
       Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    @apply bg-gray-800;
   }
 
   .bg {
@@ -161,6 +173,6 @@
   }
 
   main {
-    font-family: "Prompt";
+    font-family: "Prompt", sans-serif;
   }
 </style>
