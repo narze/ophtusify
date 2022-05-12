@@ -96,27 +96,27 @@
   </div>
 
   <input
-    class="bg-gray-200 font-bold text-[#6215f1] text-xl appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-[#6215f1]"
+    class="bg-black font-bold text-[#6215f1] text-center text-xl appearance-none border-2 border-gray-700 rounded w-full py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-[#6215f1]"
     type="text"
     bind:value={title}
   />
 
   <textarea
     rows="2"
-    class="bg-gray-200 text-lg appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-[#6215f1]"
+    class="bg-black font-medium text-center text-lg appearance-none border-2 border-gray-700 rounded w-full py-2 px-4 text-white leading-tight focus:outline-none focus:bg-white focus:border-[#6215f1]"
     type="text"
     bind:value={description}
   />
 
   <div class="flex flex-row gap-2">
-    <div
-      class="text-white text-center text-xl border rounded px-2 py-4 basis-full"
+    <button
+      class="text-white text-center text-xl border-2 border-slate-400 rounded px-2 py-4 basis-full bg-gradient-to-r from-[#6215f1] to-[#1b3efa]"
       on:click={() => {
         fileinput.click()
       }}
     >
       เลือกภาพ
-    </div>
+    </button>
     <input
       style="display:none"
       type="file"
@@ -124,14 +124,14 @@
       on:change={(e) => onFileSelected(e)}
       bind:this={fileinput}
     />
-    <div
-      class="text-white text-center text-xl border rounded px-2 py-4 basis-full"
+    <button
+      class="text-white text-center text-xl border-2 border-slate-400 rounded px-2 py-4 basis-full bg-gradient-to-r from-[#6215f1] to-[#1b3efa]"
       on:click={() => {
         copy()
       }}
     >
       ดาวน์โหลด
-    </div>
+    </button>
   </div>
 </main>
 
@@ -140,12 +140,13 @@
   <a
     href="https://github.com/narze/ophtusify"
     target="_blank"
-    class="text-white bg-[#6215f1] px-2 py-1 rounded-md mx-1">Github</a
+    class="text-white text-sm bg-gradient-to-r from-[#6215f1] to-[#1b3efa] px-2 py-1 rounded-md mx-1"
+    >Github</a
   >
   <a
     href="https://www.twitch.tv/videos/1481867740"
     target="_blank"
-    class="text-white bg-[#6215f1] px-2 py-1 rounded-md mx-1"
+    class="text-white text-sm bg-gradient-to-r from-[#6215f1] to-[#1b3efa] px-2 py-1 rounded-md mx-1"
     >Live Code @ Twitch (Biblethump)</a
   >
 </div>
