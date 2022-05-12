@@ -46,7 +46,7 @@
 <Social {url} {title} {description} />
 
 <main
-  class="p-8 min-h-screen grid place-content-center gap-8 scale-75 sm:scale-90"
+  class="p-12 min-h-screen grid place-content-center gap-4 scale-[0.6] sm:scale-75 md:scale-90 lg:scale-100"
 >
   <div class="flex flex-col">
     <h1
@@ -54,7 +54,6 @@
     >
       Ophtusify 🕶
     </h1>
-    <p class="text-white text-center">อ๊อปตัสสิฟาย</p>
   </div>
 
   <div bind:this={node} class="bg relative h-[600px] w-[600px] overflow-hidden">
