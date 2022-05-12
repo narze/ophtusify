@@ -96,21 +96,21 @@
   </div>
 
   <input
-    class="bg-black font-bold text-[#6215f1] text-center text-xl appearance-none border-2 border-gray-700 rounded w-full py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-[#6215f1]"
+    class="bg-black font-bold text-[#6215f1] text-center text-xl appearance-none border-2 border-gray-700 rounded w-full py-2 px-4 leading-tight focus:outline-none focus:border-[#6215f1]"
     type="text"
     bind:value={title}
   />
 
   <textarea
     rows="2"
-    class="bg-black font-medium text-center text-lg appearance-none border-2 border-gray-700 rounded w-full py-2 px-4 text-white leading-tight focus:outline-none focus:bg-white focus:border-[#6215f1]"
+    class="bg-black font-medium text-center text-lg appearance-none border-2 border-gray-700 rounded w-full py-2 px-4 text-white leading-tight focus:outline-none focus:border-[#6215f1]"
     type="text"
     bind:value={description}
   />
 
   <div class="flex flex-row gap-2">
     <button
-      class="text-white text-center text-xl border-2 border-slate-400 rounded px-2 py-4 basis-full bg-gradient-to-r from-[#6215f1] to-[#1b3efa]"
+      class="text-white  text-center text-xl border-2 border-slate-400 rounded px-2 py-4 basis-full bg-gradient-to-r from-[#6215f1] to-[#1b3efa]"
       on:click={() => {
         fileinput.click()
       }}
