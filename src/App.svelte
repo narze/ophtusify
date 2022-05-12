@@ -1,9 +1,15 @@
 <script lang="ts">
+  import { saveAs } from "file-saver"
+
+  import logo from "./assets/ophtus-logo.png"
+  import placeholder from "./assets/9arm.jpg"
+  import domtoimage from "dom-to-image"
+
   let title = "Ophtus Post Fan Remake!"
   let description =
     "ไม่ต้องรอแฟนเพจ ชาวเน็ตออกโรงเอง ฟอนต์ใหญ่ทะลุจอ ไม่ต้องจ้องให้เมื่อยตา!"
 
-  let avatar, fileinput
+  let avatar, fileinput, node
 
   const onFileSelected = (e) => {
     let image = e.target.files[0]
@@ -13,12 +19,23 @@
       avatar = e.target.result
     }
   }
+
+  const copy = () => {
+    domtoimage
+      .toPng(node)
+      .then(function (blob) {
+        saveAs(blob, "ophtusify.png")
+      })
+      .catch(function (error) {
+        console.error("oops, something went wrong!", error)
+      })
+  }
 </script>
 
 <main class="bg-gray-800 min-h-screen grid place-content-center gap-8">
-  <h1 class="text-6xl text-white text-center uppercase">Ophtusify</h1>
+  <h1 class="text-6xl text-white text-center uppercase mb-4">Ophtusify</h1>
 
-  <div class="bg relative h-[600px] w-[600px] overflow-hidden mt-4">
+  <div bind:this={node} class="bg relative h-[600px] w-[600px] overflow-hidden">
     <div class="relative m-[2.5%] h-[95%] w-[95%] overflow-hidden">
       <div
         class="absolute -top-[15px] -left-[15px] h-[600px] w-[600px] rotate-45 scale-[1.3] overflow-hidden bg-black"
@@ -27,8 +44,7 @@
           <div class="absolute top-20 left-20 right-20 bottom-0">
             <img
               class="object-cover w-full h-full"
-              src={avatar ||
-                "https://cdn.discordapp.com/attachments/826099394205843533/973791884331847720/Screenshot_210.png"}
+              src={avatar || placeholder}
               alt=""
             />
           </div>
@@ -39,18 +55,17 @@
       </div>
     </div>
     <div class="absolute top-0 left-0 right-0 bottom-0">
-      <img
-        src="https://ophtus.com/wp-content/uploads/2020/09/ophtus_built-for-gamers.png"
-        class="m-8 w-40"
-        alt=""
-      />
+      <img src={logo} class="m-8 w-40" alt="" />
     </div>
     <div
       class="absolute h-1/4 bottom-[2.5%] left-[2.5%] right-[2.5%] text-white mx-4"
     >
-      <h1
+      <!-- <h1
         class="text-4xl mb-2 font-bold text-transparent bg-clip-text bg-gradient-to-br from-[#6215f1] to-[#1b3efa]"
       >
+        {title}
+      </h1> -->
+      <h1 class="text-4xl mb-2 font-bold text-[#6215f1]">
         {title}
       </h1>
       <p class="text-white text-3xl font-medium">
@@ -87,6 +102,14 @@
     on:change={(e) => onFileSelected(e)}
     bind:this={fileinput}
   />
+  <div
+    class="text-white text-center text-xl border rounded px-2 py-4"
+    on:click={() => {
+      copy()
+    }}
+  >
+    ดาวน์โหลด
+  </div>
 </main>
 
 <style>
@@ -94,12 +117,6 @@
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
       Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   }
-
-  /* main {
-    text-align: center;
-    padding: 1em;
-    margin: 0 auto;
-  } */
 
   .bg {
     background: rgb(98, 21, 241);
