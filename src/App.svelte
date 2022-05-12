@@ -94,28 +94,45 @@
     bind:value={description}
   />
 
-  <div
-    class="text-white text-center text-xl border rounded px-2 py-4"
-    on:click={() => {
-      fileinput.click()
-    }}
-  >
-    เลือกภาพ
+  <div class="flex gap-8">
+    <div
+      class="w-1/2 text-white text-center text-xl border rounded px-2 py-4"
+      on:click={() => {
+        fileinput.click()
+      }}
+    >
+      เลือกภาพ
+    </div>
+    <input
+      style="display:none"
+      type="file"
+      accept=".jpg, .jpeg, .png"
+      on:change={(e) => onFileSelected(e)}
+      bind:this={fileinput}
+    />
+    <div
+      class="w-1/2 text-white text-center text-xl border rounded px-2 py-4"
+      on:click={() => {
+        copy()
+      }}
+    >
+      ดาวน์โหลด
+    </div>
   </div>
-  <input
-    style="display:none"
-    type="file"
-    accept=".jpg, .jpeg, .png"
-    on:change={(e) => onFileSelected(e)}
-    bind:this={fileinput}
-  />
-  <div
-    class="text-white text-center text-xl border rounded px-2 py-4"
-    on:click={() => {
-      copy()
-    }}
-  >
-    ดาวน์โหลด
+
+  <!-- Bottom link -->
+  <div class="fixed inset-x-0 bottom-2 text-center">
+    <a
+      href="https://github.com/narze/ophtusify"
+      target="_blank"
+      class="text-white bg-[#6215f1] px-2 py-1 rounded-md mx-1">Github</a
+    >
+    <a
+      href="https://www.twitch.tv/videos/1481867740"
+      target="_blank"
+      class="text-white bg-[#6215f1] px-2 py-1 rounded-md mx-1"
+      >Live Code @ Twitch (Biblethump)</a
+    >
   </div>
 </main>
 
