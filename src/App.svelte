@@ -4,8 +4,8 @@
   import logo from "./assets/ophtus-logo.png"
   import placeholder from "./assets/9arm.jpg"
   import domtoimage from "dom-to-image"
-  import Kofi from "./lib/Kofi.svelte";
-  import Social from "./lib/Social.svelte";
+  import Kofi from "./lib/Kofi.svelte"
+  import Social from "./lib/Social.svelte"
 
   let title = "Ophtus Post Fan Remake!"
   let description =
@@ -45,16 +45,16 @@
 <Kofi name="narze" label="Support Me" />
 <Social {url} {title} {description} />
 
-<main class="bg-gray-800 min-h-screen grid place-content-center gap-8">
+<main
+  class="p-8 min-h-screen grid place-content-center gap-8 scale-75 sm:scale-90"
+>
   <div class="flex flex-col">
     <h1
       class="text-6xl mb-4 font-bold text-transparent text-center uppercase bg-clip-text bg-gradient-to-br from-[#6215f1] to-[#1b3efa]"
     >
       Ophtusify 🕶
-    </h1>  
-    <p class="text-white text-center">
-      อ๊อปตัสสิฟาย
-    </p>
+    </h1>
+    <p class="text-white text-center">อ๊อปตัสสิฟาย</p>
   </div>
 
   <div bind:this={node} class="bg relative h-[600px] w-[600px] overflow-hidden">
@@ -109,7 +109,6 @@
     bind:value={description}
   />
 
-
   <div class="flex flex-row gap-2">
     <div
       class="text-white text-center text-xl border rounded px-2 py-4 basis-full"
@@ -135,27 +134,28 @@
       ดาวน์โหลด
     </div>
   </div>
-
-  <!-- Bottom link -->
-  <div class="fixed inset-x-0 bottom-2 text-center">
-    <a
-      href="https://github.com/narze/ophtusify"
-      target="_blank"
-      class="text-white bg-[#6215f1] px-2 py-1 rounded-md mx-1">Github</a
-    >
-    <a
-      href="https://www.twitch.tv/videos/1481867740"
-      target="_blank"
-      class="text-white bg-[#6215f1] px-2 py-1 rounded-md mx-1"
-      >Live Code @ Twitch (Biblethump)</a
-    >
-  </div>
 </main>
 
-<style>
+<!-- Bottom links -->
+<div class="fixed inset-x-0 bottom-16 sm:bottom-4 text-center">
+  <a
+    href="https://github.com/narze/ophtusify"
+    target="_blank"
+    class="text-white bg-[#6215f1] px-2 py-1 rounded-md mx-1">Github</a
+  >
+  <a
+    href="https://www.twitch.tv/videos/1481867740"
+    target="_blank"
+    class="text-white bg-[#6215f1] px-2 py-1 rounded-md mx-1"
+    >Live Code @ Twitch (Biblethump)</a
+  >
+</div>
+
+<style lang="postcss">
   :root {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
       Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    @apply bg-gray-800;
   }
 
   .bg {
