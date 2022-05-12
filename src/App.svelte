@@ -45,9 +45,13 @@
 <Kofi name="narze" label="Support Me" />
 <Social {url} {title} {description} />
 
-<main class="bg-gray-800 min-h-screen grid place-content-center gap-8 py-12">
+<main class="bg-gray-800 min-h-screen grid place-content-center gap-8">
   <div class="flex flex-col">
-    <h1 class="text-6xl text-white text-center uppercase font-bold">Ophtusify</h1>
+    <h1
+      class="text-6xl mb-4 font-bold text-transparent text-center uppercase bg-clip-text bg-gradient-to-br from-[#6215f1] to-[#1b3efa]"
+    >
+      Ophtusify 🕶
+    </h1>  
     <p class="text-white text-center">
       อ๊อปตัสสิฟาย
     </p>
@@ -105,12 +109,13 @@
     bind:value={description}
   />
 
+
   <div class="flex flex-row gap-2">
     <div
       class="text-white text-center text-xl border rounded px-2 py-4 basis-full"
       on:click={() => {
-      fileinput.click()
-    }}
+        fileinput.click()
+      }}
     >
       เลือกภาพ
     </div>
@@ -124,11 +129,26 @@
     <div
       class="text-white text-center text-xl border rounded px-2 py-4 basis-full"
       on:click={() => {
-      copy()
-    }}
+        copy()
+      }}
     >
       ดาวน์โหลด
     </div>
+  </div>
+
+  <!-- Bottom link -->
+  <div class="fixed inset-x-0 bottom-2 text-center">
+    <a
+      href="https://github.com/narze/ophtusify"
+      target="_blank"
+      class="text-white bg-[#6215f1] px-2 py-1 rounded-md mx-1">Github</a
+    >
+    <a
+      href="https://www.twitch.tv/videos/1481867740"
+      target="_blank"
+      class="text-white bg-[#6215f1] px-2 py-1 rounded-md mx-1"
+      >Live Code @ Twitch (Biblethump)</a
+    >
   </div>
 </main>
 
