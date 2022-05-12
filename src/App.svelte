@@ -43,7 +43,7 @@
   <h1
     class="text-6xl mb-4 font-bold text-transparent text-center uppercase bg-clip-text bg-gradient-to-br from-[#6215f1] to-[#1b3efa]"
   >
-    Ophtusify
+    Ophtusify 🕶
   </h1>
 
   <div bind:this={node} class="bg relative h-[600px] w-[600px] overflow-hidden">
