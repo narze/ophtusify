@@ -110,7 +110,7 @@
 
   <div class="flex flex-row gap-2">
     <button
-      class="text-white  text-center text-xl border-2 border-slate-400 rounded px-2 py-4 basis-full bg-gradient-to-r from-[#6215f1] to-[#1b3efa]"
+      class="text-white  text-center text-xl border-2 border-slate-400 rounded px-2 py-4 basis-full bg-gradient-to-r from-[#6215f1] to-[#1b3efa] hover:border-[#6215f1]"
       on:click={() => {
         fileinput.click()
       }}
@@ -125,7 +125,7 @@
       bind:this={fileinput}
     />
     <button
-      class="text-white text-center text-xl border-2 border-slate-400 rounded px-2 py-4 basis-full bg-gradient-to-r from-[#6215f1] to-[#1b3efa]"
+      class="text-white text-center text-xl border-2 border-slate-400 rounded px-2 py-4 basis-full bg-gradient-to-r from-[#6215f1] to-[#1b3efa] hover:border-[#6215f1]"
       on:click={() => {
         copy()
       }}
