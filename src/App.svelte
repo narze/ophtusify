@@ -4,10 +4,13 @@
   import logo from "./assets/ophtus-logo.png"
   import placeholder from "./assets/9arm.jpg"
   import domtoimage from "dom-to-image"
+  import Kofi from "./lib/Kofi.svelte";
+  import Social from "./lib/Social.svelte";
 
   let title = "Ophtus Post Fan Remake!"
   let description =
     "ไม่ต้องรอแฟนเพจ ชาวเน็ตออกโรงเอง ฟอนต์ใหญ่ทะลุจอ ไม่ต้องจ้องให้เมื่อยตา!"
+  let url = "https://ophtusify.narze.live/"
 
   let avatar, fileinput, node
 
@@ -39,8 +42,16 @@
   />
 </svelte:head>
 
-<main class="bg-gray-800 min-h-screen grid place-content-center gap-8">
-  <h1 class="text-6xl text-white text-center uppercase mb-4">Ophtusify</h1>
+<Kofi name="narze" label="Support Me" />
+<Social {url} {title} />
+
+<main class="bg-gray-800 min-h-screen grid place-content-center gap-8 py-12">
+  <div class="flex flex-col">
+    <h1 class="text-6xl text-white text-center uppercase font-bold">Ophtusify</h1>
+    <p class="text-white text-center">
+      อ๊อปตัสสิฟาย
+    </p>
+  </div>
 
   <div bind:this={node} class="bg relative h-[600px] w-[600px] overflow-hidden">
     <div class="relative m-[2.5%] h-[95%] w-[95%] overflow-hidden">
@@ -94,28 +105,30 @@
     bind:value={description}
   />
 
-  <div
-    class="text-white text-center text-xl border rounded px-2 py-4"
-    on:click={() => {
+  <div class="flex flex-row gap-2">
+    <div
+      class="text-white text-center text-xl border rounded px-2 py-4 basis-full"
+      on:click={() => {
       fileinput.click()
     }}
-  >
-    เลือกภาพ
-  </div>
-  <input
-    style="display:none"
-    type="file"
-    accept=".jpg, .jpeg, .png"
-    on:change={(e) => onFileSelected(e)}
-    bind:this={fileinput}
-  />
-  <div
-    class="text-white text-center text-xl border rounded px-2 py-4"
-    on:click={() => {
+    >
+      เลือกภาพ
+    </div>
+    <input
+      style="display:none"
+      type="file"
+      accept=".jpg, .jpeg, .png"
+      on:change={(e) => onFileSelected(e)}
+      bind:this={fileinput}
+    />
+    <div
+      class="text-white text-center text-xl border rounded px-2 py-4 basis-full"
+      on:click={() => {
       copy()
     }}
-  >
-    ดาวน์โหลด
+    >
+      ดาวน์โหลด
+    </div>
   </div>
 </main>
 
@@ -140,6 +153,6 @@
   }
 
   main {
-    font-family: "Prompt";
+    font-family: "Prompt", sans-serif;
   }
 </style>
