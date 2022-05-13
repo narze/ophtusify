@@ -14,6 +14,7 @@
   let url = "https://ophtusify.narze.live/"
 
   let default_size = 30
+  let limit_min_size = 20
 
   let avatar, fileinput, node
   let isCopy = false 
@@ -171,9 +172,11 @@
         เพิ่มขนาด
     </button>
     <button
-      class="text-white text-center text-xl border-2 border-slate-400 rounded px-2 py-4 basis-full bg-gradient-to-r from-[#6215f1] to-[#1b3efa] hover:border-[#6215f1]"
+      class={`text-center text-xl border-2 border-slate-400 rounded px-2 py-4 basis-full bg-gradient-to-r ${default_size > limit_min_size ? "from-[#6215f1] to-[#1b3efa] text-white hover:border-[#6215f1]" : "from-[#6215f1]/50 to-[#1b3efa]/50 text-[#9f9f9f]"}  `}
       on:click={() => {
-        default_size -= 2
+        if (default_size > limit_min_size) {
+            default_size -= 2
+        }
       }}
     >
         ลดขนาด
