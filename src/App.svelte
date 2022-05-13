@@ -7,14 +7,27 @@
   import domtoimage from "dom-to-image"
   import Kofi from "./lib/Kofi.svelte"
   import Social from "./lib/Social.svelte"
+  import dragElement from "./lib/dragElement"
+  import { onMount } from "svelte"
 
   let title = "Ophtus Post Fan Remake!"
   let description =
     "ไม่ต้องรอแฟนเพจ ชาวเน็ตออกโรงเอง ฟอนต์ใหญ่ทะลุจอ ไม่ต้องจ้องให้เมื่อยตา!"
   let url = "https://ophtusify.narze.live/"
 
-  let avatar, fileinput, node
+  let avatar, fileinput, node, imageWidth, avatarElm
   let isCopy = false 
+
+  let zoom = 100
+
+  const onAvatarLoad = () => {
+    imageWidth = avatarElm.width
+    console.dir(avatarElm)
+  };
+
+  onMount(async () => {
+    dragElement(avatarElm)
+  })
 
   const onFileSelected = (e) => {
     let image = e.target.files[0]
@@ -22,6 +35,7 @@
     reader.readAsDataURL(image)
     reader.onload = (e) => {
       avatar = e.target.result
+      setTimeout(() => onAvatarLoad(), 500);
     }
   }
 
@@ -83,22 +97,25 @@
         <div class="absolute h-full w-full -rotate-45">
           <div class="absolute top-20 left-20 right-20 bottom-0">
             <img
-              class="object-cover w-full h-full"
+              bind:this={avatarElm}
+              on:load={() => onAvatarLoad()}
+              class="absolute top-0 left-0 max-w-none h-full cursor-move"
+              style="transform: scale({zoom / 100}); left:calc(50% - {imageWidth / 2}px)"
               src={avatar || placeholder}
               alt=""
             />
           </div>
         </div>
         <div
-          class="bg-gradient absolute left-24 bottom-0 h-1/2 w-full -rotate-45"
+          class="bg-gradient absolute left-24 bottom-0 h-1/2 w-full -rotate-45 pointer-events-none"
         />
       </div>
     </div>
-    <div class="absolute top-0 left-0 right-0 bottom-0">
+    <div class="absolute top-0 left-0 right-0 bottom-0 pointer-events-none">
       <img src={logo} class="m-8 w-40" alt="" />
     </div>
     <div
-      class="absolute h-1/4 bottom-[2.5%] left-[2.5%] right-[2.5%] text-white mx-4"
+      class="absolute h-1/4 bottom-[2.5%] left-[2.5%] right-[2.5%] text-white mx-4 pointer-events-none"
     >
       <!-- <h1
         class="text-4xl mb-2 font-bold text-transparent bg-clip-text bg-gradient-to-br from-[#6215f1] to-[#1b3efa]"
@@ -112,6 +129,16 @@
         {description}
       </p>
     </div>
+  </div>
+
+  <div class="overflow-hidden mb-2">
+    <input
+      type="range"
+      min="50"
+      max="200"
+      bind:value={zoom}
+      class="slider"
+    />
   </div>
 
   <input
@@ -199,5 +226,44 @@
 
   main {
     font-family: "Prompt", sans-serif;
+  }
+
+  input[type="range"] {
+    width: 100%;
+    margin: 15px 0;
+    background-color: transparent;
+    user-select: none;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  input[type="range"]::-webkit-slider-runnable-track {
+    background-image: linear-gradient(to right, #9084a7, #6671af);
+    border-radius: 8px;
+    width: 100%;
+    height: 8px;
+    cursor: pointer;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    margin-top: -15px;
+    width: 35px;
+    height: 35px;
+    background: #eeeeee;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+    border-radius: 30px;
+    cursor: pointer;
+    -webkit-appearance: none;
+    user-select: none;
+  }
+
+  /*TODO: Use one of the selectors from https://stackoverflow.com/a/20541859/7077589 and figure out
+how to remove the virtical space around the range input in IE*/
+  @supports (-ms-ime-align: auto) {
+    /* Pre-Chromium Edge only styles, selector taken from hhttps://stackoverflow.com/a/32202953/7077589 */
+    input[type="range"] {
+      margin: 0;
+      /*Edge starts the margin from the thumb, not the track as other browsers do*/
+    }
   }
 </style>
