@@ -1,5 +1,6 @@
 <script lang="ts">
   import { saveAs } from "file-saver"
+  import { copyImageToClipboard } from 'copy-image-clipboard'
 
   import logo from "./assets/ophtus-logo.png"
   import placeholder from "./assets/9arm.jpg"
@@ -23,7 +24,7 @@
     }
   }
 
-  const copy = () => {
+  const download = () => {
     domtoimage
       .toPng(node)
       .then(function (blob) {
@@ -32,6 +33,20 @@
       .catch(function (error) {
         console.error("oops, something went wrong!", error)
       })
+  }
+
+  function Copy() {
+    domtoimage
+      .toPng(node)
+      .then(function (dataUrl) {
+        let img = new Image();
+        img.src = dataUrl;
+        copyImageToClipboard(img.src)
+      })
+      .catch(function (error) {
+        console.error("oops, something went wrong!", error)
+      })
+    
   }
 </script>
 
@@ -127,10 +142,16 @@
     <button
       class="text-white text-center text-xl border-2 border-slate-400 rounded px-2 py-4 basis-full bg-gradient-to-r from-[#6215f1] to-[#1b3efa] hover:border-[#6215f1]"
       on:click={() => {
-        copy()
+        download()
       }}
     >
       ดาวน์โหลด
+    </button>
+    <button
+      class="text-white text-center text-xl border-2 border-slate-400 rounded px-2 py-4 basis-full bg-gradient-to-r from-[#6215f1] to-[#1b3efa] hover:border-[#6215f1]"
+      on:click={Copy}
+      >
+      Copy image
     </button>
   </div>
 </main>
