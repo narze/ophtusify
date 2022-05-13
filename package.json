@@ -24,6 +24,7 @@
     "vite": "^2.9.9"
   },
   "dependencies": {
+    "copy-image-clipboard": "^2.1.2",
     "dom-to-image": "^2.6.0",
     "file-saver": "^2.0.5",
     "svelte-share-buttons-component": "^1.5.0"
