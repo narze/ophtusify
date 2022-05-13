@@ -14,6 +14,7 @@
   let url = "https://ophtusify.narze.live/"
 
   let avatar, fileinput, node
+  let isCopy = false 
 
   const onFileSelected = (e) => {
     let image = e.target.files[0]
@@ -46,7 +47,10 @@
       .catch(function (error) {
         console.error("oops, something went wrong!", error)
       })
-    
+      isCopy = !isCopy
+      setTimeout(() => {
+        isCopy = !isCopy
+      }, 5000);
   }
 </script>
 
@@ -151,7 +155,7 @@
       class="text-white text-center text-xl border-2 border-slate-400 rounded px-2 py-4 basis-full bg-gradient-to-r from-[#6215f1] to-[#1b3efa] hover:border-[#6215f1]"
       on:click={Copy}
       >
-      Copy image
+      {isCopy ? 'Copied' : 'Copy' }
     </button>
   </div>
 </main>
