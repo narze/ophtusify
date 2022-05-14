@@ -10,7 +10,7 @@
   import dragElement from "./lib/dragElement"
   import { onMount } from "svelte"
 
-  let title = "Ophtus Post Fan Remake!"
+  let title = "Ophtusify"
   let description =
     "ไม่ต้องรอแฟนเพจ ชาวเน็ตออกโรงเอง ฟอนต์ใหญ่ทะลุจอ ไม่ต้องจ้องให้เมื่อยตา!"
   let url = "https://ophtusify.narze.live/"
@@ -46,7 +46,7 @@
     domtoimage
       .toPng(node)
       .then(function (blob) {
-        saveAs(blob, "ophtusify.png")
+        saveAs(blob, `ophtusify-[${title}].png`)
         saving = false
       })
       .catch(function (error) {
