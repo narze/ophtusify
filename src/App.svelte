@@ -9,6 +9,7 @@
   import Social from "./lib/Social.svelte"
   import dragElement from "./lib/dragElement"
   import { onMount } from "svelte"
+  import pasteImage from "paste-image"
 
   let title = "Ophtusify"
   let description =
@@ -31,7 +32,12 @@
     dragElement(avatarElm)
   })
 
-  const onFileSelected = (e) => {
+  pasteImage.on("paste-image", function (image) {
+    avatar = image.src
+    setTimeout(() => onAvatarLoad(), 500)
+  })
+
+  function onFileSelected(e) {
     let image = e.target.files[0]
     let reader = new FileReader()
     reader.readAsDataURL(image)
@@ -41,7 +47,7 @@
     }
   }
 
-  const download = () => {
+  function downloadImage() {
     saving = true
     domtoimage
       .toPng(node)
@@ -54,7 +60,7 @@
       })
   }
 
-  function Copy() {
+  function copyImage() {
     saving = true
     domtoimage
       .toPng(node)
@@ -165,8 +171,9 @@
     </div>
   </div>
 
-  <p class="text-white text-center">
-    วิธีใช้: แก้ไขคำตามใจชอบ เลื่อนภาพด้วยการคลิกที่ภาพแล้วลาก
+  <p class="text-white text-center text-sm">
+    วิธีใช้: แก้ไขคำตามใจชอบ เลื่อนภาพด้วยการคลิกที่ภาพแล้วลาก<br
+    />อัปโหลดภาพหรือ Paste ภาพจากคลิปบอร์ด
   </p>
 
   <div class="flex gap-8 overflow-hidden text-white items-center">
@@ -210,14 +217,14 @@
     <button
       class="text-white text-center text-xl border-2 border-slate-400 rounded px-2 py-4 basis-full bg-gradient-to-r from-[#6215f1] to-[#1b3efa] hover:border-[#6215f1]"
       on:click={() => {
-        download()
+        downloadImage()
       }}
     >
       ดาวน์โหลด
     </button>
     <button
       class="text-white text-center text-xl border-2 border-slate-400 rounded px-2 py-4 basis-full bg-gradient-to-r from-[#6215f1] to-[#1b3efa] hover:border-[#6215f1]"
-      on:click={Copy}
+      on:click={copyImage}
     >
       {isCopy ? "Copied" : "คัดลอก"}
     </button>
