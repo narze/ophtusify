@@ -3,7 +3,7 @@
   import { copyImageToClipboard } from "copy-image-clipboard"
 
   import logo from "./assets/ophtus-logo.png"
-  import placeholder from "./assets/9arm.jpg"
+  import placeholder from "./assets/9arm-ophtus.jpg"
   import domtoimage from "dom-to-image"
   import Kofi from "./lib/Kofi.svelte"
   import Social from "./lib/Social.svelte"
@@ -20,7 +20,7 @@
   let descriptionSize = 31
   let isCopy = false
   let saving = false
-  let imageZoom = 70
+  let imageZoom = 90
 
   const onAvatarLoad = () => {
     imageWidth = avatarElm.width
