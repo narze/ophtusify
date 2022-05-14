@@ -20,7 +20,7 @@
   let descriptionSize = 31
   let isCopy = false
   let saving = false
-  let imageZoom = 100
+  let imageZoom = 70
 
   const onAvatarLoad = () => {
     imageWidth = avatarElm.width
@@ -105,7 +105,7 @@
             <img
               bind:this={avatarElm}
               on:load={() => onAvatarLoad()}
-              class="absolute top-0 left-0 max-w-none h-full cursor-move"
+              class="absolute -top-20 left-0 max-w-none h-full cursor-move"
               style="transform: scale({imageZoom /
                 100}); left:calc(50% - {imageWidth / 2}px)"
               src={avatar || placeholder}
