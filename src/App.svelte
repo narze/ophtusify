@@ -16,6 +16,10 @@
   let url = "https://ophtusify.narze.live/"
 
   let avatar, fileinput, node, imageWidth, avatarElm
+
+  let default_size = 30
+  let limit_min_size = 20
+
   let isCopy = false 
 
   let zoom = 100
@@ -125,7 +129,7 @@
       <h1 class="text-4xl mb-2 font-bold text-[#6215f1]">
         {title}
       </h1>
-      <p class="text-white text-3xl font-medium">
+      <p style={`font-size: ${default_size}px;`} class={`text-white font-medium`}>
         {description}
       </p>
     </div>
@@ -183,6 +187,27 @@
       on:click={Copy}
       >
       {isCopy ? 'Copied' : 'Copy' }
+    </button>
+  </div>
+
+  <div class="flex flex-row gap-2">
+    <button
+      class="text-white  text-center text-xl border-2 border-slate-400 rounded px-2 py-4 basis-full bg-gradient-to-r from-[#6215f1] to-[#1b3efa] hover:border-[#6215f1]"
+      on:click={() => {
+        default_size += 2
+      }}
+    >
+        เพิ่มขนาด
+    </button>
+    <button
+      class={`text-center text-xl border-2 border-slate-400 rounded px-2 py-4 basis-full bg-gradient-to-r ${default_size > limit_min_size ? "from-[#6215f1] to-[#1b3efa] text-white hover:border-[#6215f1]" : "from-[#6215f1]/50 to-[#1b3efa]/50 text-[#9f9f9f]"}  `}
+      on:click={() => {
+        if (default_size > limit_min_size) {
+            default_size -= 2
+        }
+      }}
+    >
+        ลดขนาด
     </button>
   </div>
 </main>
