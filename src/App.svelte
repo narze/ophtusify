@@ -240,10 +240,16 @@
     >Github</a
   >
   <a
-    href="https://www.twitch.tv/videos/1481867740"
+    href="https://twitch.narze.live"
     target="_blank"
     class="text-white text-sm bg-gradient-to-r from-[#6215f1] to-[#1b3efa] px-2 py-1 rounded-md mx-1"
-    >Live Code @ Twitch (Biblethump)</a
+    >Twitch</a
+  >
+  <a
+    href="https://www.youtube.com/watch?v=nlQJHIfpaYo"
+    target="_blank"
+    class="text-white text-sm bg-gradient-to-r from-[#6215f1] to-[#1b3efa] px-2 py-1 rounded-md mx-1"
+    >Live Code VOD</a
   >
 </div>
 
