@@ -295,7 +295,27 @@
     cursor: pointer;
   }
 
+  input[type="range"]::-moz-range-track{
+    background-image: linear-gradient(to right, #9084a7, #6671af);
+    border-radius: 8px;
+    width: 100%;
+    height: 8px;
+    cursor: pointer;
+  }
+
   input[type="range"]::-webkit-slider-thumb {
+    margin-top: -15px;
+    width: 35px;
+    height: 35px;
+    background: #eeeeee;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+    border-radius: 30px;
+    cursor: pointer;
+    -webkit-appearance: none;
+    user-select: none;
+  }
+
+  input[type="range"]::-moz-range-thumb {
     margin-top: -15px;
     width: 35px;
     height: 35px;
