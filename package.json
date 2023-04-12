@@ -10,24 +10,24 @@
     "check": "svelte-check --tsconfig ./tsconfig.json"
   },
   "devDependencies": {
-    "@sveltejs/vite-plugin-svelte": "^1.0.0-next.30",
-    "@tsconfig/svelte": "^2.0.1",
-    "autoprefixer": "^10.4.4",
-    "postcss": "^8.4.12",
-    "postcss-load-config": "^3.1.4",
-    "svelte": "^3.44.0",
-    "svelte-check": "^2.2.7",
-    "svelte-preprocess": "^4.10.5",
-    "tailwindcss": "^3.0.23",
-    "tslib": "^2.3.1",
-    "typescript": "^4.5.4",
-    "vite": "^2.9.9"
+    "@sveltejs/vite-plugin-svelte": "^2.0.4",
+    "@tsconfig/svelte": "^4.0.1",
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.21",
+    "postcss-load-config": "^4.0.1",
+    "svelte": "^3.58.0",
+    "svelte-check": "^3.2.0",
+    "svelte-preprocess": "^5.0.3",
+    "tailwindcss": "^3.3.1",
+    "tslib": "^2.5.0",
+    "typescript": "^5.0.4",
+    "vite": "^4.2.1"
   },
   "dependencies": {
     "copy-image-clipboard": "^2.1.2",
     "dom-to-image": "^2.6.0",
     "file-saver": "^2.0.5",
     "paste-image": "^0.0.3",
-    "svelte-share-buttons-component": "^1.5.0"
+    "svelte-share-buttons-component": "^1.5.5"
   }
 }
